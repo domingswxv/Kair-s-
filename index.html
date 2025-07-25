@@ -6,67 +6,67 @@
   <style>
     body {
       margin: 0;
-      background: #f2f2f2;
-      height: 100vh;
+      background: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
     }
 
-    .envelope-wrapper {
+    .envelope-container {
       position: relative;
-      width: 320px;
+      width: 300px;
       height: 220px;
+      background: transparent;
       perspective: 1000px;
     }
 
-    .envelope {
-      position: absolute;
+    .envelope-body {
       width: 100%;
       height: 100%;
-      background: #fff;
+      position: relative;
+      background: #ffffff;
       border: 2px solid #ccc;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      border-radius: 4px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      z-index: 1;
       overflow: hidden;
     }
 
-    .envelope::before {
-      content: '';
+    .envelope-flap {
       position: absolute;
       top: 0;
       left: 0;
       width: 0;
       height: 0;
-      border-left: 160px solid transparent;
-      border-right: 160px solid transparent;
-      border-bottom: 100px solid #fff;
-      transform-origin: top;
-      transform: rotateX(0deg);
-      transition: transform 1s ease-in-out;
-      z-index: 3;
+      border-left: 150px solid transparent;
+      border-right: 150px solid transparent;
+      border-bottom: 100px solid #ffffff;
+      transform-origin: top center;
+      transition: transform 1.2s ease-in-out;
+      z-index: 2;
     }
 
-    .envelope.open::before {
+    .envelope-flap.open {
       transform: rotateX(-180deg);
     }
 
     .letter {
       position: absolute;
-      top: 20px;
-      left: 20px;
-      right: 20px;
-      bottom: 20px;
+      top: 120px;
+      left: 10px;
+      width: 280px;
+      height: 180px;
       background: #fff;
       padding: 15px;
-      border-radius: 4px;
       box-sizing: border-box;
+      border-radius: 6px;
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1s ease, transform 1s ease;
+      transform: translateY(40px);
+      transition: transform 1s ease, opacity 1s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      z-index: 0;
       overflow-y: auto;
-      z-index: 2;
     }
 
     .letter.show {
@@ -76,65 +76,67 @@
 
     .letter h2 {
       margin-top: 0;
-      color: #c62828;
       font-size: 1.1rem;
+      color: #c62828;
       text-align: center;
     }
 
     .letter p {
-      font-size: 0.95rem;
-      color: #333;
+      font-size: 0.9rem;
       line-height: 1.4;
+      color: #333;
     }
 
-    ul {
-      padding-left: 20px;
+    .letter ul {
+      padding-left: 18px;
       margin-top: 5px;
       margin-bottom: 10px;
     }
 
-    ul li {
+    .letter li {
       margin-bottom: 5px;
     }
+
   </style>
 </head>
 <body>
 
-<div class="envelope-wrapper">
-  <div class="envelope" id="envelope">
-    <div class="letter" id="letter">
-      <h2>📬 Convite Jovens Sarados</h2>
-      <p><strong>Fala sarados! Tudo bem com vocês? ❤️</strong></p>
-      <p>
-        Venham celebrar conosco os <strong>9 anos da Missão Jovens Sarados! 🥳🎂🎉</strong>
-      </p>
-      <p>
-        Neste dia especial, vamos refletir sobre a jornada que percorremos juntos e renovar nossa fé e compromisso com Deus.
-        Vamos juntos buscar a renovação e o avivamento espiritual!
-      </p>
-      <p><strong>O que levar?</strong></p>
-      <ul>
-        <li>✅ Bíblia e terço</li>
-        <li>✅ Coração aberto para Jesus</li>
-        <li>✅ 1 ou mais amigos para viver esse momento de avivamento</li>
-      </ul>
-      <p>
-        📆 <strong>Data:</strong> 26 de julho<br>
-        ⏰ <strong>Hora:</strong> 19h00<br>
-        ⛪ <strong>Local:</strong> Vilarejo – Paróquia Maria de Nazaré<br>
-        Avenida Adélia Barbosa Oliveira, s/n
-      </p>
-      <p><strong>Te esperamos lá! Será uma noite de bênçãos e muita alegria!</strong></p>
+  <div class="envelope-container">
+    <div class="envelope-flap" id="flap"></div>
+    <div class="envelope-body">
+      <div class="letter" id="letter">
+        <h2>📬 Convite Jovens Sarados</h2>
+        <p><strong>Fala sarados! Tudo bem com vocês? ❤️</strong></p>
+        <p>
+          Venham celebrar conosco os <strong>9 anos da Missão Jovens Sarados! 🥳🎂🎉</strong>
+        </p>
+        <p>
+          Neste dia especial, vamos refletir sobre a jornada que percorremos juntos e renovar nossa fé e compromisso com Deus.
+          Vamos juntos buscar a renovação e o avivamento espiritual!
+        </p>
+        <p><strong>O que levar?</strong></p>
+        <ul>
+          <li>✅ Bíblia e terço</li>
+          <li>✅ Coração aberto para Jesus</li>
+          <li>✅ 1 ou mais amigos para viver esse momento de avivamento</li>
+        </ul>
+        <p>
+          📆 <strong>Data:</strong> 26 de julho<br>
+          ⏰ <strong>Hora:</strong> 19h00<br>
+          ⛪ <strong>Local:</strong> Vilarejo – Paróquia Maria de Nazaré<br>
+          Avenida Adélia Barbosa Oliveira, s/n
+        </p>
+        <p><strong>Te esperamos lá! Será uma noite de bênçãos e muita alegria!</strong></p>
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-  setTimeout(() => {
-    document.getElementById('envelope').classList.add('open');
-    document.getElementById('letter').classList.add('show');
-  }, 3000);
-</script>
+  <script>
+    setTimeout(() => {
+      document.getElementById('flap').classList.add('open');
+      document.getElementById('letter').classList.add('show');
+    }, 3000);
+  </script>
 
 </body>
 </html>
