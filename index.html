@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Convite Jovens Sarados</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .envelope {
+      width: 350px;
+      height: 240px;
+      position: relative;
+      background: white;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      cursor: default;
+    }
+
+    .flap {
+      width: 100%;
+      height: 100%;
+      background: white;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: top;
+      transform: rotateX(0deg);
+      transition: transform 1.2s ease-in-out;
+      z-index: 2;
+    }
+
+    .flap.open {
+      transform: rotateX(-180deg);
+    }
+
+    .letter {
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      right: 5%;
+      bottom: 5%;
+      background: #fff;
+      padding: 15px;
+      box-sizing: border-box;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 1s ease, transform 1s ease;
+      z-index: 1;
+      overflow-y: auto;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .letter.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 0;
+      color: #c62828;
+      font-size: 1.2rem;
+    }
+
+    .emoji {
+      font-size: 1.1rem;
+    }
+
+    strong {
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="envelope" id="envelope">
+    <div class="flap" id="flap"></div>
+    <div class="letter" id="letter">
+      <h2>📬 Convite Jovens Sarados</h2>
+      <p class="emoji">Fala sarados! Tudo bem com vocês? ❤️</p>
+      <p>
+        Venham celebrar conosco os <strong>9 anos da Missão Jovens Sarados! 🥳🎂🎉</strong>
+      </p>
+      <p>
+        Neste dia especial, vamos refletir sobre a jornada que percorremos juntos e renovar nossa fé e compromisso com Deus.
+        Vamos juntos buscar a renovação e o avivamento espiritual!
+      </p>
+      <p><strong>O que levar?</strong></p>
+      <ul>
+        <li>✅ Bíblia e terço</li>
+        <li>✅ Coração aberto para Jesus</li>
+        <li>✅ 1 ou mais amigos para viver esse momento de avivamento</li>
+      </ul>
+      <p>
+        📆 <strong>Data:</strong> 26 de julho<br>
+        ⏰ <strong>Hora:</strong> 19h00<br>
+        ⛪ <strong>Local:</strong> Vilarejo – Paróquia Maria de Nazaré<br>
+        Avenida Adélia Barbosa Oliveira, s/n
+      </p>
+      <p><strong>Te esperamos lá! Será uma noite de bênçãos e muita alegria!</strong></p>
+    </div>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('flap').classList.add('open');
+      document.getElementById('letter').classList.add('show');
+    }, 3000);
+  </script>
+
+</body>
+</html>
