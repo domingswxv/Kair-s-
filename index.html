@@ -1,66 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Convite Jovens Sarados</title>
   <style>
     body {
       margin: 0;
-      background: #e9e9e9;
-      font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: #f2f2f2;
       height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
     }
 
-    .container {
+    .envelope-wrapper {
+      position: relative;
+      width: 320px;
+      height: 220px;
       perspective: 1000px;
     }
 
     .envelope {
-      width: 340px;
-      height: 240px;
-      position: relative;
+      position: absolute;
+      width: 100%;
+      height: 100%;
       background: #fff;
       border: 2px solid #ccc;
-      border-radius: 8px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
       overflow: hidden;
     }
 
-    .flap {
+    .envelope::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 50%;
-      background: #fff;
+      width: 0;
+      height: 0;
+      border-left: 160px solid transparent;
+      border-right: 160px solid transparent;
+      border-bottom: 100px solid #fff;
       transform-origin: top;
       transform: rotateX(0deg);
       transition: transform 1s ease-in-out;
-      border-bottom: 2px solid #ccc;
       z-index: 3;
     }
 
-    .flap.open {
+    .envelope.open::before {
       transform: rotateX(-180deg);
     }
 
     .letter {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
       background: #fff;
-      padding: 20px;
+      padding: 15px;
+      border-radius: 4px;
       box-sizing: border-box;
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 1s ease-in, transform 1s ease-in;
-      z-index: 2;
+      transition: opacity 1s ease, transform 1s ease;
       overflow-y: auto;
+      z-index: 2;
     }
 
     .letter.show {
@@ -71,14 +77,14 @@
     .letter h2 {
       margin-top: 0;
       color: #c62828;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       text-align: center;
     }
 
     .letter p {
       font-size: 0.95rem;
       color: #333;
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
     ul {
@@ -94,9 +100,8 @@
 </head>
 <body>
 
-<div class="container">
-  <div class="envelope">
-    <div class="flap" id="flap"></div>
+<div class="envelope-wrapper">
+  <div class="envelope" id="envelope">
     <div class="letter" id="letter">
       <h2>📬 Convite Jovens Sarados</h2>
       <p><strong>Fala sarados! Tudo bem com vocês? ❤️</strong></p>
@@ -126,7 +131,7 @@
 
 <script>
   setTimeout(() => {
-    document.getElementById('flap').classList.add('open');
+    document.getElementById('envelope').classList.add('open');
     document.getElementById('letter').classList.add('show');
   }, 3000);
 </script>
